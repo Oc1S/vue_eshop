@@ -1,16 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-<<<<<<< HEAD
-
-Vue.use(VueRouter)
-
-export default new VueRouter({
-  routes: [
-    {},
-    {}
-  ]
-})
-=======
 import Login from '../components/Login'
 import Home from '../components/Home'
 
@@ -42,4 +31,3 @@ router.beforeEach((to, from, next) => {
 })
 
 export default router
->>>>>>> login
