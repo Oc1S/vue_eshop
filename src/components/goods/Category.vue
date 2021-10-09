@@ -82,7 +82,6 @@
         :rules="addCateFormRules"
         ref="addCateFormRef"
         label-width="100px"
-        class="demo-ruleForm"
       >
         <el-form-item label="分类名称：" prop="cat_name">
           <el-input v-model="addCateForm.cat_name"></el-input>
