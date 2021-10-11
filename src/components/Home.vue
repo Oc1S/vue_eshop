@@ -54,7 +54,7 @@
         </el-menu>
       </el-aside>
       <!-- 主体 -->
-      <el-main>
+      <el-main style="overflow: visible">
         <router-view></router-view>
       </el-main>
     </el-container>
