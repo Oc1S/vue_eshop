@@ -330,7 +330,7 @@ export default {
       console.log('only', this.onlyTableData)
       console.log(form)
       const { data: res } = await this.$http.post('goods', form)
-      console.log(res)
+      console.log(res·)
       if (res.meta.status !== 201) return this.$message.error('添加商品失败')
       this.$message.success('添加商品成功')
       this.$router.push('/goods')
