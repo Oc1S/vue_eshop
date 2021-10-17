@@ -1,17 +1,22 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '../components/Login'
-import Home from '../components/Home'
-import Welcome from '../components/Welcome'
-import Users from '../components/user/Users'
-import Rights from '../components/rights/Rights'
-import Roles from '../components/rights/Roles'
-import Category from '../components/goods/Category'
-import Params from '../components/goods/Params'
-import List from '../components/goods/List'
-import Add from '../components/goods/Add'
-import Order from '../components/order/Order'
-import Report from '../components/report/Report'
+//路由懒加载
+const Login = () => import(/* webpackChunkName: "Login_Home_Welcome" */ '../components/Login')
+const Home = () => import(/* webpackChunkName: "Login_Home_Welcome" */ '../components/Home')
+const Welcome = () => import(/* webpackChunkName: "Login_Home_Welcome" */ '../components/Welcome')
+
+const Users = () => import(/* webpackChunkName: "Users_Rights_Roles" */ '../components/user/Users')
+const Rights = () => import(/* webpackChunkName: "Users_Rights_Roles" */ '../components/rights/Rights')
+const Roles = () => import(/* webpackChunkName: "Users_Rights_Roles" */ '../components/rights/Roles')
+
+const Category = () => import(/* webpackChunkName: "Category_Params" */ '../components/goods/Category')
+const Params = () => import(/* webpackChunkName: "Category_Params" */ '../components/goods/Params')
+
+const List = () => import(/* webpackChunkName: "List_Add" */ '../components/goods/List')
+const Add = () => import(/* webpackChunkName: "List_Add" */ '../components/goods/Add')
+
+const Order = () => import(/* webpackChunkName: "Order_Report" */ '../components/order/Order')
+const Report = () => import(/* webpackChunkName: "Order_Report" */ '../components/report/Report')
 
 Vue.use(VueRouter)
 
@@ -78,7 +83,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.path === '/login') next()
+  if (to.path === '/login') return next()
   const tokenSrt = localStorage.getItem('token')
   if (!tokenSrt) return next('/login')
   next()

@@ -2,17 +2,16 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 
-import './plugins/element.js'
+// cdn加载element-ui，不引用
+// import './plugins/element.js'
+
 import TreeTable from 'vue-table-with-tree-grid'
 //富文本编辑器
 import VueQuillEditor from 'vue-quill-editor'
-//富文本编辑器对应样式
-import 'quill/dist/quill.core.css'
-import 'quill/dist/quill.snow.css'
-import 'quill/dist/quill.bubble.css'
 
 import './assets/css/global.css'
 import axios from 'axios'
+import NProgress from 'nprogress'
 
 Vue.component('tree-table', TreeTable)
 Vue.use(VueQuillEditor)
@@ -31,8 +30,17 @@ Vue.filter('dateFormat', function (originVal) {
 
 Vue.prototype.$http = axios
 axios.defaults.baseURL = 'https://lianghj.top:8888/api/private/v1/'
+
+// 在request拦截器中，展示进度条NProgress.start()
 axios.interceptors.request.use(config => {
+  NProgress.start()
   config.headers.Authorization = localStorage.getItem('token')
+  // 最后必须return config
+  return config
+})
+// 在response拦截器中，隐藏进度条NProgress.done()
+axios.interceptors.response.use(config => {
+  NProgress.done()
   // 最后必须return config
   return config
 })
