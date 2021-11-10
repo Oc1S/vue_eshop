@@ -1,24 +1,18 @@
 # eshop
 
-## Project setup
+使用vue开发的电商练习项目
+
+## 项目安装
 ```
-npm install
+npm i
 ```
 
-### Compiles and hot-reloads for development
+## 项目运行
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+发布模式
 ```
 npm run build
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
